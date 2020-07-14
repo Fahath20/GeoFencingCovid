@@ -64,7 +64,6 @@
 	<array>
 		<string>fetch</string>
 		<string>location</string>
-		<string>processing</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App needs your location access to notify you when you leave or enter a region</string>

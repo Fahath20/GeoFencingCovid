@@ -14,16 +14,16 @@ class LocationHandler: NSObject {
     var didFinishAuthorized:((Bool?)->())? = nil
     var regionCompletion:((CLCircularRegion?, String)->())? = nil
     private let locationManager = CLLocationManager()
-   
-    private func startMonitoring(geotification: Geotification, completion: @escaping ((CLCircularRegion?, String)->())) {
-      if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-        completion(nil, "Geofencing is not supported on this device!")
-        return
-      }
-      
-      regionCompletion = completion
-      let fenceRegion = region(with: geotification)
-      locationManager.startMonitoring(for: fenceRegion)
+    
+    override init() {
+        super.init()
+        let options: UNAuthorizationOptions = [.badge, .sound, .alert]
+        UNUserNotificationCenter.current()
+          .requestAuthorization(options: options) { success, error in
+            if let error = error {
+              print("Error: \(error)")
+            }
+        }
     }
 
     public func stopMonitoring(geotification: Geotification) {
@@ -33,12 +33,7 @@ class LocationHandler: NSObject {
       }
     }
     
-    private func region(with geotification: Geotification) -> CLCircularRegion {
-      let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
-      region.notifyOnEntry = (geotification.eventType == .onEntry)
-      region.notifyOnExit = true
-      return region
-    }
+    
     
     public func startMonitoringforGeoFencing(info: Geotification,completion:@escaping ((CLCircularRegion?, String)->())) {
         requestAuth { [weak self](authorized) in
@@ -48,6 +43,24 @@ class LocationHandler: NSObject {
                 _self.startMonitoring(geotification: info, completion: completion)
             }
         }
+    }
+    
+    private func region(with geotification: Geotification) -> CLCircularRegion {
+      let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
+      region.notifyOnEntry = (geotification.eventType == .onEntry)
+      region.notifyOnExit = true
+      return region
+    }
+    
+    private func startMonitoring(geotification: Geotification, completion: @escaping ((CLCircularRegion?, String)->())) {
+      if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+        completion(nil, "Geofencing is not supported on this device!")
+        return
+      }
+      
+      regionCompletion = completion
+      let fenceRegion = region(with: geotification)
+      locationManager.startMonitoring(for: fenceRegion)
     }
 
     fileprivate func requestAuth(_ didFinish: @escaping (Bool?) -> Void) {

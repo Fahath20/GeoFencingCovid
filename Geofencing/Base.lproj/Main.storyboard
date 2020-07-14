@@ -14,23 +14,9 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuP-WB-Es1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </mapView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="XuP-WB-Es1" secondAttribute="bottom" id="3hh-Gk-Frf"/>
-                            <constraint firstItem="XuP-WB-Es1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DzT-Xp-OZ7"/>
-                            <constraint firstItem="XuP-WB-Es1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EhE-Iw-kcJ"/>
-                            <constraint firstItem="XuP-WB-Es1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PCD-Py-e1M"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="mapView" destination="XuP-WB-Es1" id="5MQ-lV-fnI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
