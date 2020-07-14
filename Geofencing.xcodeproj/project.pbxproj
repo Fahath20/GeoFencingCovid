@@ -13,6 +13,12 @@
 		43017E3024BD1A85008B2269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43017E2E24BD1A85008B2269 /* Main.storyboard */; };
 		43017E3224BD1A8E008B2269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43017E3124BD1A8E008B2269 /* Assets.xcassets */; };
 		43017E3524BD1A8E008B2269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43017E3324BD1A8E008B2269 /* LaunchScreen.storyboard */; };
+		43017E3D24BD1AB0008B2269 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43017E3C24BD1AB0008B2269 /* Utils.swift */; };
+		43017E3F24BD1B20008B2269 /* GeofencingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43017E3E24BD1B20008B2269 /* GeofencingVM.swift */; };
+		43017E4124BD1CA4008B2269 /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43017E4024BD1CA4008B2269 /* Geotification.swift */; };
+		4398D2D924BD1E5E00E95F50 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4398D2D824BD1E5E00E95F50 /* LocationHandler.swift */; };
+		4398D2DB24BD319600E95F50 /* currentLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4398D2DA24BD319600E95F50 /* currentLocation.gpx */; };
+		4398D2DD24BD31AE00E95F50 /* Apple.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4398D2DC24BD31AE00E95F50 /* Apple.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		43017E3124BD1A8E008B2269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43017E3424BD1A8E008B2269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43017E3624BD1A8E008B2269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43017E3C24BD1AB0008B2269 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		43017E3E24BD1B20008B2269 /* GeofencingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingVM.swift; sourceTree = "<group>"; };
+		43017E4024BD1CA4008B2269 /* Geotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
+		4398D2D824BD1E5E00E95F50 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		4398D2DA24BD319600E95F50 /* currentLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = currentLocation.gpx; sourceTree = "<group>"; };
+		4398D2DC24BD31AE00E95F50 /* Apple.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Apple.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +54,7 @@
 			children = (
 				43017E2724BD1A85008B2269 /* Geofencing */,
 				43017E2624BD1A85008B2269 /* Products */,
+				A5A9A6B3359F0B3FC6FB4416 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +69,68 @@
 		43017E2724BD1A85008B2269 /* Geofencing */ = {
 			isa = PBXGroup;
 			children = (
+				4398D2E224BD3ABB00E95F50 /* Utils */,
+				4398D2E124BD3AAA00E95F50 /* Model */,
+				4398D2E024BD3A9800E95F50 /* Handler */,
+				4398D2DF24BD3A8A00E95F50 /* VM */,
+				4398D2DE24BD3A7700E95F50 /* VC */,
 				43017E2824BD1A85008B2269 /* AppDelegate.swift */,
 				43017E2A24BD1A85008B2269 /* SceneDelegate.swift */,
-				43017E2C24BD1A85008B2269 /* ViewController.swift */,
 				43017E2E24BD1A85008B2269 /* Main.storyboard */,
 				43017E3124BD1A8E008B2269 /* Assets.xcassets */,
+				4398D2DA24BD319600E95F50 /* currentLocation.gpx */,
+				4398D2DC24BD31AE00E95F50 /* Apple.gpx */,
 				43017E3324BD1A8E008B2269 /* LaunchScreen.storyboard */,
 				43017E3624BD1A8E008B2269 /* Info.plist */,
 			);
 			path = Geofencing;
+			sourceTree = "<group>";
+		};
+		4398D2DE24BD3A7700E95F50 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				43017E2C24BD1A85008B2269 /* ViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		4398D2DF24BD3A8A00E95F50 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				43017E3E24BD1B20008B2269 /* GeofencingVM.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
+		4398D2E024BD3A9800E95F50 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				4398D2D824BD1E5E00E95F50 /* LocationHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		4398D2E124BD3AAA00E95F50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43017E4024BD1CA4008B2269 /* Geotification.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4398D2E224BD3ABB00E95F50 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				43017E3C24BD1AB0008B2269 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A5A9A6B3359F0B3FC6FB4416 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +191,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4398D2DB24BD319600E95F50 /* currentLocation.gpx in Resources */,
 				43017E3524BD1A8E008B2269 /* LaunchScreen.storyboard in Resources */,
+				4398D2DD24BD31AE00E95F50 /* Apple.gpx in Resources */,
 				43017E3224BD1A8E008B2269 /* Assets.xcassets in Resources */,
 				43017E3024BD1A85008B2269 /* Main.storyboard in Resources */,
 			);
@@ -139,8 +207,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				43017E2D24BD1A85008B2269 /* ViewController.swift in Sources */,
+				43017E3F24BD1B20008B2269 /* GeofencingVM.swift in Sources */,
 				43017E2924BD1A85008B2269 /* AppDelegate.swift in Sources */,
+				43017E4124BD1CA4008B2269 /* Geotification.swift in Sources */,
 				43017E2B24BD1A85008B2269 /* SceneDelegate.swift in Sources */,
+				4398D2D924BD1E5E00E95F50 /* LocationHandler.swift in Sources */,
+				43017E3D24BD1AB0008B2269 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
