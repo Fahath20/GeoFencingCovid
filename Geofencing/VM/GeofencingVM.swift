@@ -39,19 +39,7 @@ class GeofencingVM {
             UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
         } else {
             // Otherwise present a local notification
-            let notificationContent = UNMutableNotificationContent()
-            notificationContent.body = region.identifier + message
-            notificationContent.sound = UNNotificationSound.default
-            //notificationContent.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let request = UNNotificationRequest(identifier: "location_change",
-                                                content: notificationContent,
-                                                trigger: trigger)
-            UNUserNotificationCenter.current().add(request) { error in
-                if let error = error {
-                    print("Error: \(error)")
-                }
-            }
+            CustomNotification.send(with: region.identifier + " " + message)
         }
     }
 }

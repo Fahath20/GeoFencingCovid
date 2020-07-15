@@ -19,6 +19,8 @@
 		4398D2D924BD1E5E00E95F50 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4398D2D824BD1E5E00E95F50 /* LocationHandler.swift */; };
 		4398D2DB24BD319600E95F50 /* currentLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4398D2DA24BD319600E95F50 /* currentLocation.gpx */; };
 		4398D2DD24BD31AE00E95F50 /* Apple.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4398D2DC24BD31AE00E95F50 /* Apple.gpx */; };
+		439A715924BF60E500B1548D /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A715824BF60E500B1548D /* BluetoothManager.swift */; };
+		439A715B24BF612800B1548D /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A715A24BF612800B1548D /* BluetoothViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		4398D2D824BD1E5E00E95F50 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		4398D2DA24BD319600E95F50 /* currentLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = currentLocation.gpx; sourceTree = "<group>"; };
 		4398D2DC24BD31AE00E95F50 /* Apple.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Apple.gpx; sourceTree = "<group>"; };
+		439A715824BF60E500B1548D /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		439A715A24BF612800B1548D /* BluetoothViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 		4398D2DE24BD3A7700E95F50 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				439A715A24BF612800B1548D /* BluetoothViewController.swift */,
 				43017E2C24BD1A85008B2269 /* ViewController.swift */,
 			);
 			path = VC;
@@ -105,6 +110,7 @@
 		4398D2E024BD3A9800E95F50 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
+				439A715824BF60E500B1548D /* BluetoothManager.swift */,
 				4398D2D824BD1E5E00E95F50 /* LocationHandler.swift */,
 			);
 			path = Handler;
@@ -208,9 +214,11 @@
 			files = (
 				43017E2D24BD1A85008B2269 /* ViewController.swift in Sources */,
 				43017E3F24BD1B20008B2269 /* GeofencingVM.swift in Sources */,
+				439A715924BF60E500B1548D /* BluetoothManager.swift in Sources */,
 				43017E2924BD1A85008B2269 /* AppDelegate.swift in Sources */,
 				43017E4124BD1CA4008B2269 /* Geotification.swift in Sources */,
 				43017E2B24BD1A85008B2269 /* SceneDelegate.swift in Sources */,
+				439A715B24BF612800B1548D /* BluetoothViewController.swift in Sources */,
 				4398D2D924BD1E5E00E95F50 /* LocationHandler.swift in Sources */,
 				43017E3D24BD1AB0008B2269 /* Utils.swift in Sources */,
 			);

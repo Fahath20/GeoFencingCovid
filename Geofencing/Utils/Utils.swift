@@ -63,3 +63,21 @@ extension UIApplication {
         return base
     }
 }
+
+struct CustomNotification {
+    static func send(with msg: String) {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.body = msg
+        notificationContent.sound = UNNotificationSound.default
+        //notificationContent.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "location_change",
+                                            content: notificationContent,
+                                            trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error: \(error)")
+            }
+        }
+    }
+}
