@@ -18,6 +18,7 @@ protocol BluetoothManager {
 
 class CoreBluetoothManager: NSObject, BluetoothManager {
     // MARK: - Public properties
+    public var isScanning: Bool = false
     weak var delegate: BluetoothManagerDelegate?
     private(set) var peripherals = Dictionary<UUID, CBPeripheral>() {
         didSet {
@@ -65,6 +66,7 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
 
 extension CoreBluetoothManager: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        isScanning = central.isScanning
         if central.state == .poweredOn {
 
             if central.isScanning {

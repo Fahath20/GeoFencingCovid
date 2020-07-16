@@ -41,7 +41,7 @@ class GeofencingVM {
     }
     
     private func handleBLT(_ regionMonitor: RegionMonitor) {
-        if regionMonitor == .onEntry {
+        if regionMonitor == .onEntry, !bltManager.isScanning {
             bltManager.startScanning()
         } else {
             //Stop Scanning
@@ -52,9 +52,13 @@ class GeofencingVM {
 
 extension GeofencingVM: BluetoothManagerDelegate {
     func peripheralsDidUpdate() {
-        let devices = bltManager.peripherals.mapValues{ $0 }
-        if devices.count > 0 {
-            CustomNotification.send(with: deviceFoundMsg)
+        let devicesCount = bltManager.peripherals.mapValues{ $0 }.count
+        if devicesCount > 4 {
+            CustomNotification.send(with: ZoneAlert.red.message(), title: deviceFoundMsg)
+        } else if devicesCount > 2 {
+            CustomNotification.send(with: ZoneAlert.yellow.message(), title: deviceFoundMsg)
+        } else if devicesCount > 0 {
+            CustomNotification.send(with: ZoneAlert.green.message(), title: deviceFoundMsg)
         }
     }
 }

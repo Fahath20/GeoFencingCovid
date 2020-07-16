@@ -67,9 +67,9 @@ extension UIApplication {
 }
 
 struct CustomNotification {
-    static func send(with msg: String) {
+    static func send(with msg: String, title: String = "") {
         if UIApplication.shared.applicationState == .active {
-            let alertController = UIAlertController(title: "",
+            let alertController = UIAlertController(title: title,
                                                     message: msg,
             preferredStyle: .alert)
             let openAction = UIAlertAction(title: "Close", style: .default)
@@ -79,6 +79,7 @@ struct CustomNotification {
             // Otherwise present a local notification
             let notificationContent = UNMutableNotificationContent()
             notificationContent.body = msg
+            notificationContent.title = title
             notificationContent.sound = UNNotificationSound.default
             //notificationContent.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -105,11 +106,25 @@ enum RegionMonitor {
         case .onEntry:
             return "You entered region"
         case .onExit:
-            return "You entered region"
+            return "You exit region"
         case .failed:
-            return "You entered region"
+            return "Service failed"
         default:
             return "Geofencing is not supported on this device!"
+        }
+    }
+}
+
+enum ZoneAlert {
+    case red, yellow, green
+    func message() -> String {
+        switch self {
+        case .red:
+            return "Red Zone"
+        case .yellow:
+            return "Yellow Zone"
+        case .green:
+            return "Green Zone"
         }
     }
 }
