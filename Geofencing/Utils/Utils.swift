@@ -12,6 +12,8 @@ import MapKit
 
 let radius = 2000
 
+let deviceFoundMsg = "Device found near by you"
+
 struct PreferencesKeys {
   static let savedItems = "savedItems"
 }
@@ -66,18 +68,48 @@ extension UIApplication {
 
 struct CustomNotification {
     static func send(with msg: String) {
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.body = msg
-        notificationContent.sound = UNNotificationSound.default
-        //notificationContent.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "location_change",
-                                            content: notificationContent,
-                                            trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error: \(error)")
+        if UIApplication.shared.applicationState == .active {
+            let alertController = UIAlertController(title: "",
+                                                    message: msg,
+            preferredStyle: .alert)
+            let openAction = UIAlertAction(title: "Close", style: .default)
+            alertController.addAction(openAction)
+            UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
+        } else {
+            // Otherwise present a local notification
+            let notificationContent = UNMutableNotificationContent()
+            notificationContent.body = msg
+            notificationContent.sound = UNNotificationSound.default
+            //notificationContent.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let request = UNNotificationRequest(identifier: "location_change",
+                                                content: notificationContent,
+                                                trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Error: \(error)")
+                }
             }
+        }
+    }
+}
+
+enum RegionMonitor {
+    case onEntry
+    case onExit
+    case invalid
+    case failed
+    
+    func message() -> String {
+        switch self {
+        case .onEntry:
+            return "You entered region"
+        case .onExit:
+            return "You entered region"
+        case .failed:
+            return "You entered region"
+        default:
+            return "Geofencing is not supported on this device!"
         }
     }
 }

@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Our app uses bluetooth to find other devices</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Use bluetooth to find the free devies</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>App needs your location access to notify you when you leave or enter a region</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -46,6 +50,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
 		<string>external-accessory</string>
 		<string>fetch</string>
 		<string>location</string>
@@ -72,9 +77,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Our app uses bluetooth to find other devices</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Use bluetooth to find the free devies</string>
 </dict>
 </plist>

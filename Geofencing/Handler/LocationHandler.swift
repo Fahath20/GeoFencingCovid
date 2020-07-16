@@ -12,7 +12,7 @@ import CoreLocation
 class LocationHandler: NSObject {
     typealias completion = () -> ()
     var didFinishAuthorized:((Bool?)->())? = nil
-    var regionCompletion:((CLCircularRegion?, String)->())? = nil
+    var regionCompletion:((CLCircularRegion?, RegionMonitor)->())? = nil
     private let locationManager = CLLocationManager()
     
     override init() {
@@ -35,7 +35,7 @@ class LocationHandler: NSObject {
     
     
     
-    public func startMonitoringforGeoFencing(info: Geotification,completion:@escaping ((CLCircularRegion?, String)->())) {
+    public func startMonitoringforGeoFencing(info: Geotification,completion:@escaping ((CLCircularRegion?, RegionMonitor)->())) {
         requestAuth { [weak self](authorized) in
             guard let _self = self else { return }
             
@@ -52,9 +52,9 @@ class LocationHandler: NSObject {
       return region
     }
     
-    private func startMonitoring(geotification: Geotification, completion: @escaping ((CLCircularRegion?, String)->())) {
+    private func startMonitoring(geotification: Geotification, completion: @escaping ((CLCircularRegion?, RegionMonitor)->())) {
       if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-        completion(nil, "Geofencing is not supported on this device!")
+        completion(nil, .invalid)
         return
       }
       
@@ -114,19 +114,19 @@ extension LocationHandler {
   
   func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
     if region is CLCircularRegion {
-        regionCompletion?(region as? CLCircularRegion, "Enter")
+        regionCompletion?(region as? CLCircularRegion, .onEntry)
     }
   }
   
   func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
     if region is CLCircularRegion {
-        regionCompletion?(region as? CLCircularRegion, "Exit")
+        regionCompletion?(region as? CLCircularRegion, .onExit)
     }
   }
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         print("Monitoring failed for region with identifier: \(region!.identifier)")
-        regionCompletion?(nil, "Error")
+        regionCompletion?(nil, .failed)
 
     }
 }
